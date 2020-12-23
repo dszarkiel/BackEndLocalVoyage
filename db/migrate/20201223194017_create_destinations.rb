@@ -7,7 +7,7 @@ class CreateDestinations < ActiveRecord::Migration[6.0]
       t.string :category
       t.text :comment
       t.boolean :visited
-      t.float :cost
+      t.integer :cost
       t.string :attendees
       t.integer :rating
       t.integer :user_id
