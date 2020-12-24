@@ -2,18 +2,18 @@ class DestinationsController < ApplicationController
 
     def index
         destinations = Destination.all
-        render json: destinations 
+        render json: destinations, except: [:created_at, :updated_at]
     end
 
     def show
         destination = Destination.find_by_id(params[:id])
-        render json: destination
+        render json: destination, except: [:created_at, :updated_at]
     end
 
     def create
         destination = Destination.new(desitination_params)
         if destination.save 
-            render json: destination
+            render json: destination, except: [:created_at, :updated_at]
         else 
             render json: {error: "Something went wrong, cannot log destination."}
         end
@@ -22,7 +22,7 @@ class DestinationsController < ApplicationController
     def update
         destination = Destination.find_by_id(params[:id])
         if destination.update(desitination_params)
-            render json: destination
+            render json: destination, except: [:created_at, :updated_at]
         else 
             render json: {error: "Something went wrong, cannot update destination."}
         end
@@ -31,7 +31,7 @@ class DestinationsController < ApplicationController
     def destroy
         destination = Destination.find_by_id(params[:id])
         if destination.destroy
-            render json: destination
+            render json: destination, except: [:created_at, :updated_at]
         else
             render json: {error: "Something went wrong, cannot delete destination."}
         end
