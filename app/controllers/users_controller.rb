@@ -2,15 +2,10 @@ class UsersController < ApplicationController
 
     def index
 
-        users = User.all 
-        render json: users 
-    end
-=======
         users = User.all
         render json: users, except: [:created_at, :updated_at]
     end
 
->>>>>>> 6d42bb1ce308e6167625a6b6965a8c80871d3082
     def show
         user = User.find_by_id(params[:id])
         render json: user.to_json(include: [:destinations], except: [:created_at, :updated_at])
