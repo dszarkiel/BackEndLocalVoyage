@@ -15,7 +15,7 @@ class UsersController < ApplicationController
         if user.save 
             render json: user, except: [:created_at, :updated_at]
         else 
-            render json: {error: "Something went wrong, cannot log user."}
+            render json: {error: user.errors.full_messages}
         end
     end
     
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         if user.update(user_params)
             render json: user
         else 
-            render json: {error: "Something went wrong, cannot update user."}
+            render json: {error: user.errors.full_messages}
         end
     end
 
