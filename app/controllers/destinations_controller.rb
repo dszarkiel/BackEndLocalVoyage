@@ -15,7 +15,7 @@ class DestinationsController < ApplicationController
         if destination.save 
             render json: destination, except: [:created_at, :updated_at]
         else 
-            render json: {error: "Something went wrong, cannot log destination."}
+            render json: {error: "Please use the Google Search feature to find destination."}
         end
     end
     
