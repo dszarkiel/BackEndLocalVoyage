@@ -24,7 +24,7 @@ class DestinationsController < ApplicationController
         if destination.update(desitination_params)
             render json: destination, except: [:created_at, :updated_at]
         else 
-            render json: {error: "Something went wrong, cannot update destination."}
+            render json: {error: destination.errors.full_messages}
         end
     end
 
