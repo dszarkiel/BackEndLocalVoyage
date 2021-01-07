@@ -1,7 +1,8 @@
 class Destination < ApplicationRecord
     belongs_to :user
 
-    validates :longitude, :latitude, presence: true 
+    validates :longitude, presence: { message: "is needed. Please use the Google Search" }
+    validates :rating, numericality: { greater_than_or_equal_to: 0, less_than: 6, message: "must be between 1-5" } 
 
 
     after_initialize :set_defaults
